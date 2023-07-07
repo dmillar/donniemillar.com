@@ -1,19 +1,18 @@
 import * as fs from "node:fs";
-
+//import path from 'path'
+//import { fileURLToPath } from 'url'
 import { createRequestHandler } from "@remix-run/express";
-import { broadcastDevReady, installGlobals } from "@remix-run/node";
+import { type ServerBuild, broadcastDevReady } from "@remix-run/node";
+
 import chokidar from "chokidar";
 import compression from "compression";
 import express from "express";
 import morgan from "morgan";
 
-installGlobals();
+const PROJECT_ROOT = process.cwd()
+const BUILD_PATH = `${PROJECT_ROOT}/.remix/build/index.js`;
 
-const BUILD_PATH = "./build/index.js";
-/**
- * @type { import('@remix-run/node').ServerBuild | Promise<import('@remix-run/node').ServerBuild> }
- */
-let build = await import(BUILD_PATH);
+let build: ServerBuild = await import(BUILD_PATH);
 
 const app = express();
 
@@ -24,13 +23,13 @@ app.disable("x-powered-by");
 
 // Remix fingerprints its assets so we can cache forever.
 app.use(
-  "/build",
-  express.static("public/build", { immutable: true, maxAge: "1y" })
+  "/dist",
+  express.static(`${PROJECT_ROOT}/.remix/public/build`, { immutable: true, maxAge: "1y" })
 );
 
 // Everything else (like favicon.ico) is cached for an hour. You may want to be
 // more aggressive with this caching.
-app.use(express.static("public", { maxAge: "1h" }));
+app.use(express.static(`${PROJECT_ROOT}/public`, { maxAge: "1h" }));
 
 app.use(morgan("tiny"));
 
@@ -59,16 +58,16 @@ function createDevRequestHandler() {
   watcher.on("all", async () => {
     // 1. purge require cache && load updated server build
     const stat = fs.statSync(BUILD_PATH);
-    build = import(BUILD_PATH + "?t=" + stat.mtimeMs);
+    let build: ServerBuild = await import(BUILD_PATH + "?t=" + stat.mtimeMs);
     // 2. tell dev server that this app server is now ready
-    broadcastDevReady(await build);
+    broadcastDevReady(build);
   });
 
-  return async (req, res, next) => {
+  return async (req: any, res: any, next: any) => {
     try {
       //
       return createRequestHandler({
-        build: await build,
+        build: build,
         mode: "development",
       })(req, res, next);
     } catch (error) {
