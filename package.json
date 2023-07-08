@@ -6,7 +6,7 @@
     "build": "remix build",
     "build:server": "tsx ./scripts/buildServer.ts",
     "dev": "remix dev --no-restart -c \"tsx watch --clear-screen=false --ignore \"app/**\" --ignore \".remix/**\" --ignore \"node_modules/**\" ./server/index.ts\"",
-    "start": "cross-env NODE_ENV=production node ./.remix/server/build/index.js",
+    "start": "cross-env NODE_ENV=production tsx ./server/index.ts",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -50,8 +50,8 @@
     "node": "18"
   },
   "name": "donniemillar.com",
-  "version": "1.0.0",
-  "main": "postcss.config.js",
+  "version": "0.0.1",
+  "main": "server/index.ts",
   "directories": {
     "doc": "docs"
   },

@@ -11,14 +11,16 @@ datasource db {
 }
 
 model Requests {
-  request_id Int @id
+  request_id String @id
   timestamp DateTime @default(now())
-  url String
-  agent String
-  response_time Float
-  referrer String
-  status Int
-
+  method String @default("")
+  url String @default("")
+  agent String @default("")
+  response_time Float  @default(-1)
+  referrer String @default("")
+  status String @default("")
+  ip String  @default("")
+  accept_lang String  @default("")
 }
 
 model Events {
