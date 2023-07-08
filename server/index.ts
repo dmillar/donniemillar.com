@@ -1,18 +1,15 @@
-import * as fs from "node:fs";
-//import path from 'path'
-//import { fileURLToPath } from 'url'
-import { createRequestHandler } from "@remix-run/express";
-import { type ServerBuild, broadcastDevReady } from "@remix-run/node";
-
+import express from "express";
 import chokidar from "chokidar";
 import compression from "compression";
-import express from "express";
 import morgan from "morgan";
+
+import { createRequestHandler } from "@remix-run/express";
+import { type ServerBuild, broadcastDevReady } from "@remix-run/node";
 
 const PROJECT_ROOT = process.cwd()
 const BUILD_PATH = `${PROJECT_ROOT}/.remix/build/index.js`;
 
-let build: ServerBuild = await import(BUILD_PATH);
+let build: ServerBuild = await import(`${BUILD_PATH}`);
 
 const app = express();
 
@@ -32,6 +29,7 @@ app.use(
 app.use(express.static(`${PROJECT_ROOT}/public`, { maxAge: "1h" }));
 
 app.use(morgan("tiny"));
+
 
 app.all(
   "*",
@@ -56,10 +54,7 @@ function createDevRequestHandler() {
   const watcher = chokidar.watch(BUILD_PATH, { ignoreInitial: true });
 
   watcher.on("all", async () => {
-    // 1. purge require cache && load updated server build
-    const stat = fs.statSync(BUILD_PATH);
-    let build: ServerBuild = await import(BUILD_PATH + "?t=" + stat.mtimeMs);
-    // 2. tell dev server that this app server is now ready
+    let build: ServerBuild = await import(`${BUILD_PATH}?t=${Date.now()}`);
     broadcastDevReady(build);
   });
 

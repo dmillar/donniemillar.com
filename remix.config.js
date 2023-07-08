@@ -1,7 +1,7 @@
 /** @type {import("@remix-run/dev").AppConfig} */
 export default {
   cacheDirectory: "./.remix/cache",
-  ignoredRouteFiles: ["**/.*", ".*", "**/*.css", "**/*.test.{js,jsx,ts,tsx}"],
+  ignoredRouteFiles: ["**/.*", ".*", "**/*.test.{js,jsx,ts,tsx}"],
   assetsBuildDirectory: "./.remix/public/build",
   serverBuildPath: "./.remix/build/index.js",
   publicPath: "/dist/",
@@ -10,6 +10,7 @@ export default {
   tailwind: true,
   postcss: true,
   watchPaths: ["./tailwind.config.ts", "./server/*"],
+  serverMinify: true,  
   future: {
     v2_dev: true,
     v2_errorBoundary: true,

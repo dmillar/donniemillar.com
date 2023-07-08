@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -8,9 +7,14 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import globalCssUrl from './styles/global.css'
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "preload", as: "font", href: "/fonts/lato/lato-latin-300-normal.woff2", crossOrigin: "anonymous" },
+  { rel: "preload", as: "font", href: "/fonts/lato/lato-latin-400-normal.woff2", crossOrigin: "anonymous" },
+  { rel: "preload", as: "font", href: "/fonts/lato/lato-latin-700-normal.woff2", crossOrigin: "anonymous"},
+  { rel: "stylesheet", href: globalCssUrl, as: "style" },
+  { rel: "icon", href : "/images/favicon-64.webp", sizes: "64x64" },
 ];
 
 export default function App() {
@@ -22,7 +26,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-sans">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

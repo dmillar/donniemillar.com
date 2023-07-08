@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* To preload these fonts _once_  you need to make sure the <link> preload
+has an anoymous 'crossorigin' attribute. */
+
+@layer base {
+    @font-face {
+      font-family: 'Lato';
+      font-weight: 300;
+      src: url(/fonts/lato/lato-latin-300-normal.woff2) format("woff2");
+    }
+    @font-face {
+        font-family: 'Lato';
+        font-weight: 400;
+        src: url(/fonts/lato/lato-latin-400-normal.woff2) format("woff2");
+      }
+    @font-face {
+      font-family: "Lato";
+      font-weight: 700;
+      src: url(/fonts/lato/lato-latin-700-normal.woff2) format("woff2");
+    }
+  }
+
+  a {
+    @apply text-blue-600 underline;
+  }
