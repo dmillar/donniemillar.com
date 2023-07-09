@@ -15,7 +15,7 @@ const BUILD_PATH = `${PROJECT_ROOT}/.remix/build/index.js`;
 let build: ServerBuild = await import(`${BUILD_PATH}`);
 
 const app = express();
-
+app.enable('trust proxy');
 app.use(compression());
 
 // http://expressjs.com/en/advanced/best-practice-security.html#at-a-minimum-disable-x-powered-by-header
