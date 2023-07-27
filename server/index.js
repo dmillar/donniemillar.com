@@ -64,7 +64,7 @@ app.use(
       }),
     }
   ),
-  process.env.NODE_ENV === "development" ? morgan("dev") : null
+  process.env.NODE_ENV === "development" ? morgan("dev") : morgan("combined")
 );
 
 app.all(
