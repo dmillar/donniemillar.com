@@ -1,16 +1,15 @@
 import type { Config } from 'tailwindcss'
-/** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
-  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  content: ['./app/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Lato', ...defaultTheme.fontFamily.sans],
+        sans: ['Lato', 'sans-serif'],
       },
     },
   },
   plugins: [],
-} satisfies Config;
+} satisfies Config
+
 

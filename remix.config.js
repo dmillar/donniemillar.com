@@ -1,16 +1,14 @@
-/** @type {import("@remix-run/dev").AppConfig} */
+/** @type {import('@remix-run/dev').AppConfig} */
 export default {
+  ignoredRouteFiles: ["**/.*", "api.*"],
   cacheDirectory: "./.remix/cache",
-  ignoredRouteFiles: ["**/.*", ".*", "**/*.test.{js,jsx,ts,tsx}"],
-  assetsBuildDirectory: "./.remix/public/build",
-  serverBuildPath: "./.remix/build/index.js",
-  publicPath: "/dist/",
+  // appDirectory: "app",
+  assetsBuildDirectory: "./.remix/build/client",
+  serverBuildPath: "./.remix/build/server/entryServer.js",
+  publicPath: "/build/",
   serverModuleFormat: "esm",
-  serverPlatform: "node",
+  watchPaths: "./server/*",
   tailwind: true,
-  postcss: true,
-  watchPaths: ["./tailwind.config.ts", "./server/*"],
-  serverMinify: true,  
   future: {
     v2_dev: true,
     v2_errorBoundary: true,

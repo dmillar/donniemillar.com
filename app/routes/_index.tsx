@@ -1,4 +1,10 @@
-import type { V2_MetaFunction } from "@remix-run/node";
+import type { V2_MetaFunction, DataFunctionArgs } from "@remix-run/node";
+//import morgan from "morgan";
+
+export async function loader({ context: { app } }: DataFunctionArgs) {
+
+  return null
+}
 
 export const meta: V2_MetaFunction = () => {
   return [
