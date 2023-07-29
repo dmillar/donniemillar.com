@@ -1,5 +1,7 @@
 import * as fs from "node:fs";
 
+import 'dotenv/config';
+
 import { createRequestHandler } from "@remix-run/express";
 import { broadcastDevReady, installGlobals } from "@remix-run/node";
 import chokidar from "chokidar";
@@ -8,6 +10,7 @@ import express from "express";
 import morgan from "morgan";
 import crypto from "crypto";
 import rfs from "rotating-file-stream";
+import cookieParser from "cookie-parser";
 
 installGlobals();
 
@@ -19,7 +22,6 @@ let build = await import(BUILD_PATH);
 
 const app = express();
 app.enable("trust proxy");
-
 app.use(compression());
 
 // http://expressjs.com/en/advanced/best-practice-security.html#at-a-minimum-disable-x-powered-by-header
@@ -38,6 +40,19 @@ app.use(
 // more aggressive with this caching.
 app.use(express.static(`${process.cwd()}/public`, { maxAge: "1h" }));
 
+// fingerprint user so I can log repeat visits :)
+app.use(cookieParser(process.env.COOKIE_SECRET))
+app.use((req, res, next) => {
+  let userFingerprint = req.signedCookies['user-fingerprint']
+  if (!userFingerprint) {
+    const cookieExpires = new Date(new Date().setFullYear(new Date().getFullYear() + 10))
+    userFingerprint = crypto.randomUUID()
+    res.cookie('user-fingerprint', userFingerprint, { signed: true, expires: cookieExpires } )
+    req.signedCookies['user'] = userFingerprint
+  }
+  next()
+})
+
 app.use(
   morgan(
     function (tokens, req, res) {
@@ -53,6 +68,7 @@ app.use(
         agent: tokens["user-agent"](req, res),
         accept_lang: req.headers["accept-language"],
         ip: tokens["remote-addr"](req, res),
+        user_fingerprint: req.signedCookies['user-fingerprint'],
       };
 
       return JSON.stringify(logData);
@@ -64,7 +80,7 @@ app.use(
       }),
     }
   ),
-  process.env.NODE_ENV === "development" ? morgan("dev") : morgan("combined")
+  process.env.NODE_ENV === "development" && morgan("dev")
 );
 
 app.all(
