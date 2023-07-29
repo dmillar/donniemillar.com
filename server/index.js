@@ -80,7 +80,7 @@ app.use(
       }),
     }
   ),
-  process.env.NODE_ENV === "development" && morgan("dev")
+  morgan("tiny")
 );
 
 app.all(
