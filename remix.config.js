@@ -9,6 +9,7 @@ export default {
   serverModuleFormat: "esm",
   watchPaths: "./server/*",
   tailwind: true,
+  serverMinify: true,
   future: {
     v2_dev: true,
     v2_errorBoundary: true,

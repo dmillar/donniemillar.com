@@ -64,7 +64,7 @@ app.use(
         url: tokens.url(req, res),
         status: tokens.status(req, res),
         response_time: parseFloat(responseTime),
-        referrer: tokens["referrer"](req, res),
+        referrer: req.headers.referer,
         agent: tokens["user-agent"](req, res),
         accept_lang: req.headers["accept-language"],
         ip: tokens["remote-addr"](req, res),
