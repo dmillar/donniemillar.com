@@ -73,7 +73,7 @@ export function ErrorPage({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useTypingEffect(textToType: string, interKeyStrokeDurationInMs: number) {
+export function useTypingEffect(textToType: string, interKeyStrokeDurationInMs: number) : string {
   const [currentPosition, setCurrentPosition] = useState(0);
   const currentPositionRef = useRef(0);
 
