@@ -73,7 +73,7 @@ export default function Index() {
         </p>
         <p>
           If you'd like to read a sample of his research, working papers, or CV please email
-          <strong>access [at] donniemillar [dot] com</strong>
+          {" "}<strong>access [at] donniemillar [dot] com</strong>
         </p>
       </article>
     </main>
