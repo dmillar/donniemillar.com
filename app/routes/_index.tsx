@@ -31,12 +31,12 @@ export default function Index() {
       </header>
       <article className="space-y-4">
         <p>
-          <strong>I was born and raised in the San Francisco Bay Area.</strong>{" "}
-          I am fortunate to have grown up near Silicon Valley where I had early
-          exposure to technology and the startup mentality. After high school, I
+          <strong>Donnie was born and raised in the San Francisco Bay Area.</strong>{" "}
+          He feels fortunate to have grown up near Silicon Valley where he had early
+          exposure to technology and the startup mentality. After high school he
           moved to Utah to attend college and participate in what was ultimately
-          a brief collegiate baseball career. So, I began working as a web
-          developer for a small design firm which fostered a network of other
+          a brief collegiate baseball career. So, he put his early programming skills to work as a web
+          developer for a small design firm. There he fostered a network of other
           young professionals with startup ambitions. This led to co-founding a
           few startups before graduating from the University of Utah in 2007.
           One,{" "}
@@ -44,37 +44,35 @@ export default function Index() {
             PacsDrive
           </a>
           , resulted in a successful exit in 2010. Having studied both finance
-          and computer science during my undergrad, I sought a company where I
+          and computer science during university, he sought a company where he
           could merge these skillsets. Goldman Sachs was the firm that appealed
-          most to me, given its position in the market and reputation for hiring
-          the best people.
+          most to him, given its position in the market and its reputation for hiring
+          bright people he could learn from.
         </p>
         <p>
-          <strong>I joined Goldman in 2010</strong> as an analyst calculating
-          security prices on the fixed income trading desk&mdash; I moved up
-          quickly. In late 2012, I transitioned to publishing investment
-          research where I carved out a niche as <em>the</em> data scientist
-          embedded among the global macro markets research team. I had the
+          <strong>He joined Goldman in 2010</strong> as an analyst on the trading desk pricing
+          fixed income derivative securties&mdash;he was able to move up
+          quickly, and was asked to join the investment
+          research division as<em>the</em> data scientist
+          embedded among the global macro markets research team. He had the
           opportunity to{" "}
           <a href="https://www.goldmansachs.com/insights/archive/world-cup-sections/world-cup-book-2014-statistical-model.html">
             work on some fun research
           </a>{" "}
-          and collaborate with the some of the best minds in economics and
-          financial markets.
+          and collaborate with the best economists and market strategists in the world.
         </p>
 
         <p>
-          <strong>Outside of work</strong> I prioritze traveling, skiing, and
-          fly fishing. I&apos;ve had amazing experiences on nearly every
-          continent&mdash;Antarctica remains elusive for now. Recently, though,
-          I&apos;ve been enjoying more time exploring the culture, food, and
-          scenery of southern France. I also mentor startup founders in Utah and
-          have civic engagements with the Human Rights Campaign, Fish for
+          <strong>Outside of work</strong> he prioritzes travel, skiing, and
+          fly fishing. He&apos;s experienced cultures on nearly every
+          continent&mdash;though Antarctica remains elusive for now. Recently,
+          he&apos;s been enjoying time exploring the culture, food, and
+          scenery of southern France. He mentors startup founders in Utah and
+          maintains civic engagements with the Human Rights Campaign, Fish for
           Garbage, and Junior Acheivement USA.
         </p>
         <p>
-          For access to my resume and publications please send an email to{" "}
-          <br />
+          If you'd like to read a sample of his research, working papers, or CV please email
           <strong>access [at] donniemillar [dot] com</strong>
         </p>
       </article>
