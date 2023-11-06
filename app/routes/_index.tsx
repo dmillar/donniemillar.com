@@ -67,7 +67,7 @@ export default function Index() {
           fly fishing. He&apos;s experienced cultures on nearly every
           continent&mdash;though Antarctica remains elusive for now. Recently,
           he&apos;s been enjoying time exploring the culture, food, and
-          scenery of southern France. He mentors startup founders in Utah and
+          scenery of southern France. He has mentored startup founders and
           maintains civic engagements with the Human Rights Campaign, Fish for
           Garbage, and Junior Acheivement USA.
         </p>
