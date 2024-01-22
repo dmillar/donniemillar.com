@@ -1,8 +1,7 @@
-//import * as fs from "node:fs";
-
-import {} from "dotenv/config";
+import 'dotenv/config';
 import fs from "fs";
-import { type ServerBuild, broadcastDevReady, installGlobals } from "@remix-run/node";
+import type { ServerBuild } from '@remix-run/node';
+import { broadcastDevReady, installGlobals } from "@remix-run/node";
 import { createRequestHandler } from "@remix-run/express";
 import chokidar from "chokidar";
 import os from "node:os";
@@ -14,6 +13,7 @@ import rfs from "rotating-file-stream";
 import cookieParser from "cookie-parser";
 import sourceMapSupport from "source-map-support";
 import * as remixBuild from "../.remix/build/server/remix-build.js"
+
 
 export function createServer(remixBuild: ServerBuild, mode: "production") {
 
